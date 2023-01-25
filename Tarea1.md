@@ -20,5 +20,8 @@ A su vez, en modo kernel, todo el código que se ejecuta, comparte un único esp
 |Espacio de direcciones virtuales| Todos los procesos comparten un unico espacio de direcciones virtuales | todos los procesos obtienen un espacio de direcciones virtuales por separado| 
 |Nivel de privilegio | Las aplicaciones tienen más privilegio que en el modo usuario| Las aplicaciones tienen menos privilegios| 
 |Restricciones| Puede acceder tanto a los programas del usuario comoa los programados por el kernel| necesita acceder a los programas del kernel ya que no puede acceder a ellos directamente| 
+|Valor de bit| El valor es de 0| El bit en modo usuario tiene un valor de 1|
+|Referencias de memoria| Es capaz de hacer referencia a ambos modos de memoria| Solo puede hacer referencia a la memoria asignada para el modo del usuario|
+| Fallo del sistema| Un bloqueo en modo Kernel es grave y complicado de solucionar| Se puede recuperar facilmente de un bloqueo del sistema| 
 
 
