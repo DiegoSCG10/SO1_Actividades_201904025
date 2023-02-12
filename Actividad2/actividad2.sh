@@ -7,9 +7,25 @@ read -p "Ingrese su usuario: " GITHUB_USER
 consulta="https://api.github.com/users/$GITHUB_USER"
 resultado=$(curl $consulta)
 
-#Texto de salida
-salida="Hola $GITHUB_USER. User ID:"
-echo $salida
+# Para obtener el ID
+IFS=',' 
+array=($resultado)
+unset IFS;
+idUser="${array[1]}"
+
+#Separando el numero ID
+IFS=':'
+id=($idUser)
+unset IFS;
+
+#Obtener la fecha de creación
+len=${#array[@]}
+fechaUser="${array[$len-2]}"
+
+#Separando la fecha
+IFS=':'
+fechaU=($fechaUser)
+unset IFS;
 
 #Obtener fecha de salida
 DIA=$(date +%d)
@@ -38,6 +54,11 @@ else
     echo "Creando archivo..."
     touch $rutaArchivo
 fi    
+
+#Texto de salida
+clear
+salida="Hola $GITHUB_USER. User ID: ${id[1]}. Cuenta fue creada el: ${fechaU[1]}"
+echo $salida
 
 #Se escribe en el archivo
 echo $salida >> $rutaArchivo
